@@ -2,6 +2,13 @@ name: wg-dci-evpn
 
 topology:
   nodes:
+    internet-router:
+      kind: linux
+      image: frrouting/frr:v8.4.1
+      binds:
+        - internet-router/daemons:/etc/frr/daemons
+        - internet-router/frr.conf:/etc/frr/frr.conf
+
     dci-router1:
       kind: linux
       image: frrouting/frr:v8.4.1
@@ -20,6 +27,7 @@ topology:
       binds:
         - dci-router3/daemons:/etc/frr/daemons
         - dci-router3/frr.conf:/etc/frr/frr.conf
+
     dc-srl1:
       kind: srl
       image: ghcr.io/nokia/srlinux
@@ -41,12 +49,12 @@ topology:
       image: praqma/network-multitool:latest
 
   links:
-    - endpoints: ["dci-router1:eth1", "dci-router2:eth1"]
-    - endpoints: ["dci-router1:eth2", "dci-router3:eth1"]
-    - endpoints: ["dci-router2:eth2", "dci-router3:eth2"]
-    - endpoints: ["dc-srl1:e1-1", "dci-router1:eth3"]
-    - endpoints: ["dc-srl2:e1-1", "dci-router2:eth3"]
-    - endpoints: ["dc-srl3:e1-1", "dci-router3:eth3"]
+    - endpoints: ["dci-router1:eth1", "internet-router:eth1"]
+    - endpoints: ["dci-router2:eth1", "internet-router:eth2"]
+    - endpoints: ["dci-router3:eth1", "internet-router:eth3"]
+    - endpoints: ["dc-srl1:e1-1", "dci-router1:eth2"]
+    - endpoints: ["dc-srl2:e1-1", "dci-router2:eth2"]
+    - endpoints: ["dc-srl3:e1-1", "dci-router3:eth2"]
     - endpoints: ["PC1:eth1", "dc-srl1:e1-2"]
     - endpoints: ["PC2:eth1", "dc-srl2:e1-2"]
     - endpoints: ["PC3:eth1", "dc-srl3:e1-2"]
