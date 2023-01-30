@@ -31,12 +31,15 @@ topology:
     dc-srl1:
       kind: srl
       image: ghcr.io/nokia/srlinux
+      startup-config: dc-srl1-basic.cli
     dc-srl2:
       kind: srl
       image: ghcr.io/nokia/srlinux
+      startup-config: dc-srl2-basic.cli
     dc-srl3:
       kind: srl
       image: ghcr.io/nokia/srlinux
+      startup-config: dc-srl3-basic.cli
 
     PC1:
       kind: linux
