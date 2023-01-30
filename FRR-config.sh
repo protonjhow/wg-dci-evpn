@@ -1,5 +1,8 @@
 #!/bin/sh
 ## dci-router1
+# install wireguard
+sudo docker exec -d clab-wg-dci-evpn-dci-router1 apk add wireguard-tools
+
 # vtep loopback
 sudo docker exec -d clab-wg-dci-evpn-dci-router1 ip addr add 100.127.0.1/32 dev lo
 
