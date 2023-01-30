@@ -43,13 +43,13 @@ topology:
 
     PC1:
       kind: linux
-      image: praqma/network-multitool:latest
+      image: wbitt/network-multitool:latest
     PC2:
       kind: linux
-      image: praqma/network-multitool:latest
+      image: wbitt/network-multitool:latest
     PC3:
       kind: linux
-      image: praqma/network-multitool:latest
+      image: wbitt/network-multitool:latest
 
   links:
     - endpoints: ["dci-router1:eth1", "internet-router:eth1"]
