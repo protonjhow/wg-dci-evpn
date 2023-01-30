@@ -15,18 +15,21 @@ topology:
       binds:
         - dci-router1/daemons:/etc/frr/daemons
         - dci-router1/frr.conf:/etc/frr/frr.conf
+        - dci-router1/wg.conf:/etc/wg.conf
     dci-router2:
       kind: linux
       image: frrouting/frr:v8.4.1
       binds:
         - dci-router2/daemons:/etc/frr/daemons
         - dci-router2/frr.conf:/etc/frr/frr.conf
+        - dci-router2/wg.conf:/etc/wg.conf
     dci-router3:
       kind: linux
       image: frrouting/frr:v8.4.1
       binds:
         - dci-router3/daemons:/etc/frr/daemons
         - dci-router3/frr.conf:/etc/frr/frr.conf
+        - dci-router3/wg.conf:/etc/wg.conf
 
     dc-srl1:
       kind: srl
