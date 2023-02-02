@@ -2,13 +2,6 @@
 ## dci-router1
 # setup "internet" routes over the eth1
 sudo docker exec -d clab-wg-dci-evpn-dci-router1 ip route add 100.64.0.0/16 via 100.64.1.254
-# install wireguard
-sudo docker exec -d clab-wg-dci-evpn-dci-router1 apk add wireguard-tools -y 
-sleep 10
-# setup wireguard port
-sudo docker exec -d clab-wg-dci-evpn-dci-router1 ip link add dev wg0 type wireguard
-sudo docker exec -d clab-wg-dci-evpn-dci-router1 ip address add 192.168.0.1/24 dev wg0
-sudo docker exec -d clab-wg-dci-evpn-dci-router1 wg setconf wg0 /etc/wg.conf
 
 # vtep loopback
 sudo docker exec -d clab-wg-dci-evpn-dci-router1 ip addr add 100.127.0.1/32 dev lo
@@ -34,13 +27,6 @@ sudo docker exec -d clab-wg-dci-evpn-dci-router1 ip link set eth2.110 up
 ## dci-router2
 # setup "internet" routes over the eth1
 sudo docker exec -d clab-wg-dci-evpn-dci-router2 ip route add 100.64.0.0/16 via 100.64.2.254
-# install wireguard
-sudo docker exec -d clab-wg-dci-evpn-dci-router2 apk add wireguard-tools -y
-sleep 10
-# setup wireguard port
-sudo docker exec -d clab-wg-dci-evpn-dci-router2 ip link add dev wg0 type wireguard
-sudo docker exec -d clab-wg-dci-evpn-dci-router2 ip address add 192.168.0.2/24 dev wg0
-sudo docker exec -d clab-wg-dci-evpn-dci-router2 wg setconf wg0 /etc/wg.conf
 
 # vtep loopback
 sudo docker exec -d clab-wg-dci-evpn-dci-router2 ip addr add 100.127.0.2/32 dev lo
@@ -66,13 +52,6 @@ sudo docker exec -d clab-wg-dci-evpn-dci-router2 ip link set eth2.110 up
 ## dci-router3
 # setup "internet" routes over the eth1
 sudo docker exec -d clab-wg-dci-evpn-dci-router3 ip route add 100.64.0.0/16 via 100.64.3.254
-# install wireguard
-sudo docker exec -d clab-wg-dci-evpn-dci-router3 apk add wireguard-tools -y
-sleep 10
-# setup wireguard port
-sudo docker exec -d clab-wg-dci-evpn-dci-router3 ip link add dev wg0 type wireguard
-sudo docker exec -d clab-wg-dci-evpn-dci-router3 ip address add 192.168.0.3/24 dev wg0
-sudo docker exec -d clab-wg-dci-evpn-dci-router3 wg setconf wg0 /etc/wg.conf
 
 # vtep loopback
 sudo docker exec -d clab-wg-dci-evpn-dci-router3 ip addr add 100.127.0.3/32 dev lo
