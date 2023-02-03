@@ -1,2 +1,5 @@
+venv
+.vscode
+
 clab-wg-dci-evpn/*
 .wg-dci-evpn.yml.bak
