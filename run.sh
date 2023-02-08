@@ -1,5 +1,5 @@
 #!/bin/sh
-clab deploy --topo wg-dci-evpn.yml
+sudo clab deploy --topo wg-dci-evpn.yml
 ./SRL-config.sh
 ./PC-interfaces.sh
 ./WG-config.sh
