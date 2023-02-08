@@ -1,5 +1,6 @@
 zebra=yes
 bgpd=yes
+bfdd=yes
 ospfd=no
 ospf6d=no
 ripd=no
@@ -13,7 +14,6 @@ babeld=no
 sharpd=no
 staticd=no
 pbrd=no
-bfdd=no
 fabricd=no
 
 vtysh_enable=yes
