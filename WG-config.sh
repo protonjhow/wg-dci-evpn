@@ -1,26 +1,23 @@
 #!/bin/sh
-## dci-router1
-# install wireguard
+# install wireguard everywhere and wait for APK to finish
 sudo docker exec -d clab-wg-dci-evpn-dci-router1 apk add wireguard-tools 
-sleep 30
+sudo docker exec -d clab-wg-dci-evpn-dci-router2 apk add wireguard-tools
+sudo docker exec -d clab-wg-dci-evpn-dci-router3 apk add wireguard-tools
+sleep 150
+
+## dci-router1
 # setup wireguard port
 sudo docker exec -d clab-wg-dci-evpn-dci-router1 ip link add dev wg0 type wireguard
 sudo docker exec -d clab-wg-dci-evpn-dci-router1 ip address add 192.168.0.1/24 dev wg0
 sudo docker exec -d clab-wg-dci-evpn-dci-router1 wg setconf wg0 /etc/wg.conf
 
 ## dci-router2
-# install wireguard
-sudo docker exec -d clab-wg-dci-evpn-dci-router2 apk add wireguard-tools
-sleep 30
 # setup wireguard port
 sudo docker exec -d clab-wg-dci-evpn-dci-router2 ip link add dev wg0 type wireguard
 sudo docker exec -d clab-wg-dci-evpn-dci-router2 ip address add 192.168.0.2/24 dev wg0
 sudo docker exec -d clab-wg-dci-evpn-dci-router2 wg setconf wg0 /etc/wg.conf
 
 ## dci-router3
-# install wireguard
-sudo docker exec -d clab-wg-dci-evpn-dci-router3 apk add wireguard-tools
-sleep 30
 # setup wireguard port
 sudo docker exec -d clab-wg-dci-evpn-dci-router3 ip link add dev wg0 type wireguard
 sudo docker exec -d clab-wg-dci-evpn-dci-router3 ip address add 192.168.0.3/24 dev wg0
